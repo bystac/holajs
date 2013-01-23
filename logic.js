@@ -10,15 +10,13 @@ var dispatcher = (function($, win) {
 	// hold current position
 	current_user = null,
 
-
 	init = function() {
 		// init 100 users object
-		var i;
+		var i = 0;
 		current_user = 0;
 		while (i < 100) {
-			users[i++] = {online: null};
+			users[i++] = {status: null};
 		}
-
 		$('#btn-start').on('click', push_request);
 	},
 
@@ -30,10 +28,10 @@ var dispatcher = (function($, win) {
 		$.ajax({
 			url: 'is_online.php',
 			data: {i: current_user}
-		}).done(function(data, textStatus, jqXHR) {
+		}).done(function(data) {
 				users[current_user].status = parseInt(data,10);
 				append_status(current_user, users[current_user].status);
-		}).fail(function(jqXHR, textStatus, errorThrown) {
+		}).fail(function() {
 			users[current_user].status = null;
 			append_status(current_user, users[current_user].status);
 		}).always(function() {
