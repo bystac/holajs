@@ -1,0 +1,43 @@
+#status {
+	text-align: center;
+}
+
+#progress-current-status, #progress-list {
+	width: 500px;
+	margin: 0 auto;
+}
+
+#progress-list {
+	height: 200px;
+	border: 1px solid silver;
+	overflow-y: scroll;
+}
+
+#progress-list span {
+	display: block;
+	background: #F2F2F2;
+}
+
+#progress-list .online {
+	color: #0B610B;
+}
+
+#progress-list .offline {
+	color: #B40404;
+}
+
+#progress-list .fail {
+	color: #FFBF00;
+}
+
+#progress-list .done {
+	background: #6E6E6E;
+	color: #FAFAFA;
+}
+
+footer {
+	margin-top: 20px;
+	text-align: center;
+	border-top: 1px solid gray;
+	color: silver;
+}
