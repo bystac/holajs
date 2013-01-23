@@ -2,19 +2,18 @@
 	text-align: center;
 }
 
-#progress-current-status, #progress-list {
-	width: 500px;
-	margin: 0 auto;
-}
-
 #progress-list {
+	width: 500px;
 	height: 200px;
+	margin: 0 auto;
 	border: 1px solid silver;
 	overflow-y: scroll;
 }
 
 #progress-list span {
+	text-align: left;
 	display: block;
+	border-bottom: 1px solid silver;
 	background: #F2F2F2;
 }
 
