@@ -14,7 +14,7 @@ var dispatcher = (function($, win) {
 		// init 100 users object
 		var i = 0;
 		current_user = 0;
-		while (i < 100) {
+		while (i < 101) {
 			users[i++] = {status: null};
 		}
 		$('#btn-start').on('click', push_request);
@@ -29,12 +29,11 @@ var dispatcher = (function($, win) {
 			url: 'is_online.php',
 			data: {i: current_user}
 		}).done(function(data) {
-				users[current_user].status = parseInt(data,10);
-				append_status(current_user, users[current_user].status);
+			users[current_user].status = parseInt(data,10);
 		}).fail(function() {
 			users[current_user].status = null;
-			append_status(current_user, users[current_user].status);
 		}).always(function() {
+			append_status(current_user, users[current_user].status);
 			// move to next user
 			if (current_user++ < 100) {
 				push_request();
@@ -55,11 +54,11 @@ var dispatcher = (function($, win) {
 			$txt.addClass('fail').text(idx + ': Network fail');
 		}
 
-		$('#progress-list').append($txt);
+		$('#progress-list').prepend($txt);
 	},
 
 	sum_result = function() {
-		$('#progress-list').append($('span').addClass('done').text('Done. Submiting results...'));
+		$('#progress-list').prepend($('<span>').addClass('done').text('Done. Submiting results...'));
 		$.ajax({
 			url: 'dummy.php',
 			data: users
